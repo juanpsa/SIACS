@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : may 28, 2018, 10:13:02 a.m.
+    Author     : mdcarrion7
+*/
+body,h1 {font-family: "Raleway", sans-serif;
+         color: buttonhighlight
+}
+body, html {height: 100%}
+.bgimg {
+    background-image: url('/w3images/forestbridge.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+ul.horizontal{
+    margin:0;
+    padding:0;
+}
+ul.horizontal li{
+    display:block;
+    float:left;
+    padding:0 10px;
+}
+table.inventario{
+    color: black;
+    border-color: #ccccff;
+    font-family: sans-serif;    
+    
+}
+
