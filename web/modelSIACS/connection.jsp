@@ -1,5 +1,5 @@
 <%@ page import="java.sql.*" %>
-<%@ page import="java.io.*,controllerJava.conexionDB" %>
+<%@ page import="java.io.*,controllerJava.conexionDB,javax.swing.table.DefaultTableModel" %>
 
 
 <%
@@ -23,39 +23,37 @@
                 <input id="modelo" type="text" placeholder="Nombre" maxlength="30">
                 <input id="conect" type="text" placeholder="Apellido" maxlength="30">
                 <input id="tipo" type="text" placeholder="ROL" maxlength="30">            
-                <button class="add-btn btn-styles" onclick="viewSIACS/reports.jsp">AÑADIR</button>
-                <%
-                    conexionDB neo  = new conexionDB();                    
-                    out.println("<h3>"+neo.fImpr()+"</h3>");
-                %>
+                <button class="add-btn btn-styles" onclick="viewSIACS/reports.jsp">AÑADIR</button>                
             </div>
         </form>
         <div id="body">
             
             <table border="0" >                                
                 <%
+                    conexionDB neo  = new conexionDB();                    
                     try {                        
-                        String connectionURL = "jdbc:mysql://localhost:3306/prueba";
-                        Connection connection = null;
-                        Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection = DriverManager.getConnection(connectionURL, "root", "admin");
-                       
-                        if (!connection.isClosed()) {
-                            out.println("<h3>BD cargada</h3>");
-                        }
-                        
-                        Statement Estamento = connection.createStatement();
-                        ResultSet rs = Estamento.executeQuery("select * from producto");
+//                        String connectionURL = "jdbc:mysql://localhost:3306/prueba";
+//                        Connection connection = null;                        
+//                        Class.forName("com.mysql.jdbc.Driver").newInstance();
+//                        connection = DriverManager.getConnection(connectionURL, "root", "admin");
+//                       
+//                        if (!connection.isClosed()) {
+//                            out.println("<h3>BD cargada</h3>");
+//                        }                        
+
+                        DefaultTableModel tableModel = new DefaultTableModel();
+                        tableModel = neo.conecctiondata();
                         //out.println(rs.first());                                                    
-                        while (rs.next()) {
-                            out.println("<tr><td id='id-box'>" + rs.getInt(1) + "</td>");
-                            out.println("<td id='marca  -box'>" + rs.getString(2) + "</td>");
-                            out.println("<td id='cntd-box' align='center'>" + rs.getInt(3) + "</td>");
-                            out.println("<td id='model-box'>" + rs.getString(4) + "</td>");
-                            out.println("<td><button class='modify-btn btn-styles' value='" + rs.getInt(1) + "'>MODIFICAR</button></td>");
-                            out.println("<td><button class='delete-btn btn-styles' value='" + rs.getInt(1) + "'>ELIMINAR</button></td></tr>");
+                        for(int i=0; i<tableModel.getRowCount();i++){
+                        //while (tableModel.next()) {
+                            out.println("<tr><td id='id-box'>" + tableModel.getValueAt(i,0) + "</td>");
+                            out.println("<td id='marca  -box'>" + tableModel.getValueAt(i,1) + "</td>");
+                            out.println("<td id='cntd-box' align='center'>" + tableModel.getValueAt(i,2) + "</td>");
+                            out.println("<td id='model-box'>" + tableModel.getValueAt(i,3) + "</td>");
+                            out.println("<td><button class='modify-btn btn-styles' value='" + "'>MODIFICAR</button></td>");
+                            out.println("<td><button class='delete-btn btn-styles' value='" + "'>ELIMINAR</button></td></tr>");
                         }
-                        connection.close();
+//                        connection.close();
                     } catch (Exception ex) {
                         out.println("Unable to connect to database.");
                     }
