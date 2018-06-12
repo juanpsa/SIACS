@@ -6,10 +6,10 @@
 package modelSIACS;
 
 
-import controllerJava.CRUDcontroller;
+import controllerJava.CRUDstorage;
 /**
  *
- * @author mdcarrion7
+ * @author jpsigcho
  */
 public class dataStorage {
     

@@ -1,47 +1,32 @@
+package controllerJava;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import controllerJava.conexionDB;
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllerJava;
-
-import java.sql.*;
-import javax.swing.table.DefaultTableModel;
-import modelSIACS.dataStorage;
 
 /**
  *
  * @author jpsigcho
  */
-public class conexionDB {
+public class CRUDstorage {
 
-    protected String connectionURL = "jdbc:mysql://localhost:3306/prueba";
-    protected String driver = "com.mysql.jdbc.Driver";
-    protected String usuarioDB = "root";
-    protected String passDB = "admin";
-
-    public conexionDB() {
+    public CRUDstorage() {
     }
-
-    protected Connection enlaceDB(Connection DBlink) {
-        try {            
-            Class.forName(driver).newInstance();
-            DBlink = DriverManager.getConnection(connectionURL, usuarioDB, passDB);
-            if (!DBlink.isClosed()) {
-                System.out.println("<h3>BD cargada</h3>");
-            }
-        } catch (Exception exception) {
-            System.out.println("controllerJava.conexionDB.enlaceDB()");
-        }
-        return DBlink;
-    }
-
-    /*
-        Método para poblar un Result Set en una tabla de datos
-     */
+    
     public DefaultTableModel tableStorage(ResultSet rs) {
         DefaultTableModel tableModel = new DefaultTableModel();
-        try {
+        try {            
             //Retrieve meta data from ResultSet
             ResultSetMetaData metaData = rs.getMetaData();
             //Get number of columns from meta data
@@ -59,8 +44,8 @@ public class conexionDB {
                     row[i] = rs.getObject(i + 1);
                 }
                 //Now add row to table model with that array of objects as an argument
-                tableModel.addRow(row);
-            }
+                tableModel.addRow(row);                
+            }            
             //Now add that table model to your table and you are done :D
         } catch (Exception ex) {
             System.out.println("Unable to populate to storage.");
@@ -68,16 +53,23 @@ public class conexionDB {
         return tableModel;
     }
 
+    
     /*
-        Método para conectarse a la DB y extraer la 
-     */
+        Método para conectarse a la DB y extraer la data sobre los inventarios
+    */
     public DefaultTableModel conecctiondata() {
         ResultSet rs = null;
         DefaultTableModel dataStor = new DefaultTableModel();
         try {
-            //String connectionURL = "jdbc:mysql://localhost:3306/prueba";
             Connection connection = null;
-            connection = enlaceDB(connection);
+            conexionDB conexionClass = new conexionDB();
+//            String connectionURL = "jdbc:mysql://localhost:3306/prueba";            
+//            Class.forName("com.mysql.jdbc.Driver").newInstance();
+//            connection = DriverManager.getConnection(connectionURL, "root", "admin");
+            connection = conexionClass.enlaceDB(connection);
+            if (!connection.isClosed()) {
+                System.out.println("<h3>BD cargada</h3>");
+            }
             Statement Estamento = connection.createStatement();
             rs = Estamento.executeQuery("select * from producto");
             dataStor = tableStorage(rs);
@@ -85,7 +77,18 @@ public class conexionDB {
         } catch (Exception ex) {
             System.out.println("Unable to connect to database.");
         }
-        return dataStor;
-
+        return dataStor;        
     }
+    
+    /*
+        Método para obtener los datos del usuario
+    */
+    public DefaultTableModel usuario(){
+        DefaultTableModel tablaUsuario = new DefaultTableModel();
+//        tablaUsuario.addColumn("Id", );
+//        tablaUsuario.addColumn("nombre");
+//        tablaUsuario.addRow("");
+        return tablaUsuario;
+    } 
+    
 }

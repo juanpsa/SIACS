@@ -1,7 +1,7 @@
 <%-- 
     Document   : reports
     Created on : jun 5, 2018, 11:26:08 a.m.
-    Author     : mdcarrion7
+    Author     : jpsigcho
 --%>
 <%
     HttpSession objSesion = request.getSession(false);
