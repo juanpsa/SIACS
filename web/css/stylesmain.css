@@ -5,7 +5,7 @@ and open the template in the editor.
 */
 /* 
     Created on : may 31, 2018, 4:27:45 p.m.
-    Author     : adri
+    Author     : jpsigcho
 */
 
 body {
@@ -136,7 +136,57 @@ video {
     font-weight: bold;
 }
 
-
 title{
     background-color: #000;
+}
+/*
+    añadido desde https://www.w3schools.com/Html/tryit.asp?filename=tryhtml_layout_float
+*/
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+
+
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+
+/*footer {
+    position: fixed;*/
+    /* Altura total del footer en px con valor negativo           
+    bottom:0px;
+    padding: 5px 0px 5px 0px;
+    clear: both;
+    background: black;
+    text-align: center;
+    color: white;
+    margin-top:50px;
+}*/
+
+nav {
+    float: left;
+    width: 80px;
+    padding: 1em;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+}
+
+article {
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
 }

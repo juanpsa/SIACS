@@ -63,16 +63,14 @@ public class CRUDstorage {
         try {
             Connection connection = null;
             conexionDB conexionClass = new conexionDB();
-//            String connectionURL = "jdbc:mysql://localhost:3306/prueba";            
-//            Class.forName("com.mysql.jdbc.Driver").newInstance();
-//            connection = DriverManager.getConnection(connectionURL, "root", "admin");
             connection = conexionClass.enlaceDB(connection);
             if (!connection.isClosed()) {
                 System.out.println("<h3>BD cargada</h3>");
-            }
+            }            
             Statement Estamento = connection.createStatement();
             rs = Estamento.executeQuery("select * from producto");
-            dataStor = tableStorage(rs);
+            if(rs.next())
+                dataStor = tableStorage(rs);
             connection.close();
         } catch (Exception ex) {
             System.out.println("Unable to connect to database.");
