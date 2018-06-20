@@ -1,4 +1,5 @@
-package controllerJava;
+package com.siacs.controller;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,7 +7,10 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
-import controllerJava.conexionDB;
+import com.siacs.model.conexionDB;
+import java.io.IOException;
+import java.sql.SQLException;
+import com.siacs.model.conexionDB;
 
 
 /*
@@ -57,27 +61,33 @@ public class CRUDstorage {
     /*
         Método para conectarse a la DB y extraer la data sobre los inventarios
     */
-    public DefaultTableModel conecctiondata() {
-        ResultSet rs = null;
-        DefaultTableModel dataStor = new DefaultTableModel();
-        try {
-            Connection connection = null;
-            conexionDB conexionClass = new conexionDB();
-            connection = conexionClass.enlaceDB(connection);
-            if (!connection.isClosed()) {
-                System.out.println("<h3>BD cargada</h3>");
-            }            
-            Statement Estamento = connection.createStatement();
-            rs = Estamento.executeQuery("select * from producto");
-            if(rs.next())
-                dataStor = tableStorage(rs);
-            connection.close();
-        } catch (Exception ex) {
-            System.out.println("Unable to connect to database.");
-        }
-        return dataStor;        
-    }
-    
+//    public DefaultTableModel conecctiondata(String tablaconsultar) {
+//        ResultSet rs = null;
+//        DefaultTableModel dataStor = new DefaultTableModel();
+//        try {
+//            Connection connection = null;
+//            conexionDB conexionClass = new conexionDB("jdbc:mysql://localhost:3306/siacs", "root", "admin");
+//            connection = conexionClass.enlaceDB(connection);
+//            if (!connection.isClosed()) {
+//                System.out.println("<h3>BD cargada</h3>");
+//            }            
+//            Statement Estamento = connection.createStatement();
+//            if(!tablaconsultar.isEmpty()){
+//                rs = Estamento.executeQuery("select * from " + tablaconsultar);
+//            }else{
+//                rs = Estamento.executeQuery("select * from producto");
+//            }
+//            rs = Estamento.executeQuery("select * from producto");
+//            if(rs.next())
+//                dataStor = tableStorage(rs);
+//            connection.close();
+//        } catch (SQLException|IllegalArgumentException | SecurityException exception) {
+//            System.out.println("Unable to connect to database.");
+//            System.out.println("Error: " + exception);            
+//        }
+//        return dataStor;        
+//    }
+//    
     /*
         Método para obtener los datos del usuario
     */

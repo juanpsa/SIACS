@@ -38,7 +38,7 @@ span {
 
 input[type="text"] {
     border: 0;
-    border-bottom: 2px solid #FF5E00;
+    border-bottom: 2px;
     background-color: #fff;
     font-weight: bold;
     text-align: center;
@@ -48,6 +48,7 @@ input[type="text"] {
     font-size: 1em;
     font-weight: bold;
     border-collapse: collapse;
+    padding: 1em;
 }
 
 table tr:nth-child(2n) {
@@ -59,14 +60,21 @@ table tr:nth-child(2n) {
     text-align: center;
 }
 
-#cntd-box {
-    width: 86px;
+#cntd-box, #ident-box {
+    width: 50px;
     text-align: center;
 }
 
-#namepr-box,  #model-box, #conect-box, #type-box {
-    width: 190px;
+#namepr-box,  #code-box, #conect-box, #type-box {
+    width: 150px;
+    text-align: center;
 }
+
+#descrp-box, #location-box, #observ-box{
+    width: 200px;
+    text-align: left;
+}
+
 
 #price-box {
     width: 179px;
@@ -170,7 +178,7 @@ header, footer {
     margin-top:50px;
 }*/
 
-nav {
+nav, #registrocontainer{
     float: left;
     width: 80px;
     padding: 1em;

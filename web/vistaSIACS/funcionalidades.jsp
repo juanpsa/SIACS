@@ -1,8 +1,10 @@
 <%-- 
     Document   : funcionalidades
     Created on : jun 13, 2018, 8:32:05 a.m.
-    Author     : mdcarrion7
+    Author     : jpsigcho
 --%>
+<%@ page import="java.sql.*,com.siacs.model.conexionDB" %>
+<%@ page import="java.io.*,com.siacs.controller.CRUDstorage,javax.swing.table.DefaultTableModel" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,6 +14,7 @@
     String user = "USUARIO_X"; //aqui tu identificador de usuario
     objSesion.setAttribute("usuario", user);
     out.println("Poniendo usuario en sesion ..." + objSesion.getAttribute("usuario"));
+
 %>
 <html>
     <head>
@@ -27,12 +30,12 @@
             </header>
             <nav>
                 <ul>
-                    <li><a href="../viewSIACS/connection.jsp">Inventario</a></li>
-                    <li><a href="../viewSIACS/funcionalidades.html">Usuarios</a></li>
-                    <li><a href="#">Informes</a></li>
+                    <li><a href="../AdminInsumo?action=mostrar">Inventario</a></li>
+                    <li><a href="funcionalidades.html">Usuarios</a></li>
+                    <li><a href="conexion.jsp">Informes</a></li>
+                    <li><a href="../prueba">lo que sea</a></li>
                 </ul>
             </nav>
-
             <article>
                 <h1>Inventario</h1>
                 <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                

@@ -1,3 +1,10 @@
+<%-- 
+    Document   : home
+    Created on : jun 14, 2018, 3:38:24 p.m.
+    Author     : jpsigcho
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -17,13 +24,13 @@ and open the template in the editor.
             <img id="logo"  alt="logo" src="resources/logoDCS.jpg">
             <h2>SIACS</h2>
             <h3>Sistema de Inventario para el Área de Ciencias de la salud </h3>
-            <form action="vistaSIACS/funcionalidades.jsp">
-                Usuario: <input  class="btn-styles" autocomplete="off"><br>
-                Password: <input  class="btn-styles" autocomplete="off"><br>
+            <form action="vistaSIACS/funcionalidades.jsp" >
+                Usuario: <input class="btn-styles" autocomplete="off"><br>
+                Password: <input class="btn-styles" autocomplete="off"><br>
                 <input type="submit" value="Ingresar" title="Ingresar">
             </form>
+            <a href="prueba">my servlet</a>
         </div><br>
-        <a href="../../hello">my servlet</a>
         <div id="body-section">
             <div id="video-content"></div>
             <div id="view-content"></div>
