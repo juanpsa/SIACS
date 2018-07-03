@@ -24,7 +24,7 @@ and open the template in the editor.
             <img id="logo"  alt="logo" src="resources/logoDCS.jpg">
             <h2>SIACS</h2>
             <h3>Sistema de Inventario para el Área de Ciencias de la salud </h3>
-            <form action="vistaSIACS/funcionalidades.jsp" >
+            <form action="AdminInsumo?action=index" method="post" >
                 Usuario: <input class="btn-styles" autocomplete="off"><br>
                 Password: <input class="btn-styles" autocomplete="off"><br>
                 <input type="submit" value="Ingresar" title="Ingresar">

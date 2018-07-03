@@ -20,13 +20,13 @@ import java.sql.PreparedStatement;
  *
  * @author mdcarrion7
  */
-public class InsumoDAO {
+public class MaterialDAO {
 
     private conexionDB con;
     private Connection connection;
-    private String tablaInsumos = "insumoinv";
+    private String tablaMateriales = "materialinv";
 
-    public InsumoDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) throws SQLException {
+    public MaterialDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) throws SQLException {
         System.out.println(jdbcURL);
         System.out.println(jdbcUsername);
         System.out.println(jdbcPassword);
@@ -35,7 +35,7 @@ public class InsumoDAO {
 
     public Integer obtenerIndex() throws SQLException {
         Integer indexsiguiente = 1;
-        String sql= "Select max(id)+1 from " +tablaInsumos;
+        String sql= "Select max(id)+1 from " +tablaMateriales;
         con.conectar();
         connection = con.getjdbcConnection();
         Statement statement = connection.createStatement();
@@ -48,10 +48,10 @@ public class InsumoDAO {
     }
 
     // listar todos los productos
-    public List<Insumo> listarInsumos() throws SQLException {
+    public List<Insumo> listarMateriales() throws SQLException {
 
-        List<Insumo> listaInsumos = new ArrayList<Insumo>();
-        String sql = "SELECT * FROM " + tablaInsumos;
+        List<Insumo> listaMateriales = new ArrayList<Insumo>();
+        String sql = "SELECT * FROM " + tablaMateriales;
         con.conectar();
         connection = con.getjdbcConnection();
         Statement statement = connection.createStatement();
@@ -66,15 +66,15 @@ public class InsumoDAO {
             String ubicacion = resulSet.getString("ubicacion");
             String observaciones = resulSet.getString("observaciones");
             Insumo insumo = new Insumo(id, codigo, nombre, descripcion, cantidad, ubicacion, observaciones);
-            listaInsumos.add(insumo);
+            listaMateriales.add(insumo);
         }
         con.desconectar();
-        return listaInsumos;
+        return listaMateriales;
     }
 
     // insertar insumo en la tabla de insumos
     public boolean insertar(Insumo insumo) throws SQLException {
-        String sql = "INSERT INTO " + tablaInsumos + " (id, codigo, nombre, descripcion, cantidad, ubicacion, "
+        String sql = "INSERT INTO " + tablaMateriales + " (id, codigo, nombre, descripcion, cantidad, ubicacion, "
                 + "observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";
         System.out.println(insumo.getDescripcion());
         con.conectar();
@@ -98,7 +98,7 @@ public class InsumoDAO {
     public Insumo obtenerPorId(int id) throws SQLException {
         Insumo insumo = null;
 
-        String sql = "SELECT * FROM " + tablaInsumos + " WHERE id= ? ";
+        String sql = "SELECT * FROM " + tablaMateriales + " WHERE id= ? ";
         con.conectar();
         connection = con.getjdbcConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -119,7 +119,7 @@ public class InsumoDAO {
     // actualizar
     public boolean actualizar(Insumo insumo) throws SQLException {
         boolean rowActualizar = false;
-        String sql = "UPDATE " + tablaInsumos + " SET nombre=?,descripcion=?,cantidad=?, ubicacion=?, observaciones=? "
+        String sql = "UPDATE " + tablaMateriales + " SET nombre=?,descripcion=?,cantidad=?, ubicacion=?, observaciones=? "
                 + "WHERE id=?";
         con.conectar();
         connection = con.getjdbcConnection();
@@ -141,7 +141,7 @@ public class InsumoDAO {
     //eliminar
     public boolean eliminar(Insumo insumo) throws SQLException {
         boolean rowEliminar = false;
-        String sql = "DELETE FROM " + tablaInsumos + " WHERE ID=?";
+        String sql = "DELETE FROM " + tablaMateriales + " WHERE ID=?";
         con.conectar();
         connection = con.getjdbcConnection();
         PreparedStatement statement = connection.prepareStatement(sql);

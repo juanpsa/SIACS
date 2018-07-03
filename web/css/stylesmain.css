@@ -154,6 +154,7 @@ title{
 div.container {
     width: 100%;
     border: 1px solid gray;
+    
 }
 
 
@@ -168,20 +169,21 @@ header, footer {
 
 /*footer {
     position: fixed;*/
-    /* Altura total del footer en px con valor negativo           
-    bottom:0px;
-    padding: 5px 0px 5px 0px;
-    clear: both;
-    background: black;
-    text-align: center;
-    color: white;
-    margin-top:50px;
+/* Altura total del footer en px con valor negativo           
+bottom:0px;
+padding: 5px 0px 5px 0px;
+clear: both;
+background: black;
+text-align: center;
+color: white;
+margin-top:50px;
 }*/
 
 nav, #registrocontainer{
     float: left;
-    width: 80px;
+    width: 150px;
     padding: 1em;
+    height: auto;    
 }
 
 nav ul {
@@ -189,12 +191,113 @@ nav ul {
     padding: 0;
 }
 
-nav ul a {
+nav ul li a {
     text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #4CAF50;
 }
 
 article {
     border-left: 1px solid gray;
     padding: 1em;
     overflow: hidden;
+    height: auto;
+}
+
+
+/*menús  */
+#menu ul {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+/* items del menu */
+
+#menu ul li {
+    background-color:#2e518b;
+}
+
+/* enlaces del menu */
+
+#menu ul a {
+    display:block;
+    color:#fff;
+    text-decoration:none;
+    font-weight:400;
+    font-size:15px;
+    padding:10px;
+    font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* items del menu */
+
+#menu ul li {
+    position:relative;
+    float:left;
+    margin:0;
+    padding:0;
+}
+
+/* efecto al pasar el ratón por los items del menu */
+
+#menu ul li:hover {
+    background:#5b78a7;
+}
+
+.buttonHmenu {
+    display: block;
+    border: solid black;    
+    background: #5b78a7;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;    
+    width: 250px;
+}
+
+.buttonVmenu {
+    display: block;
+    border: solid black;        
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: gray;
+    font-weight: bold;
+    vertical-align: middle;    
+}
+
+.hmenu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: auto;    
+}
+
+.hmenu ul li {
+    float: left;
+}
+
+.hmenu ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.hmenu ul li a:hover {
+    background-color: #111111;
+}
+
+
+.piepagina{
+    height: 250px;
 }

@@ -37,10 +37,10 @@
             <%
                 HttpSession objSesion = request.getSession();
                 if (request.getAttribute("indexInsumo") != null && !request.getAttribute("indexInsumo").toString().isEmpty()) {
-                    out.println("<h3>Administrador</h3>");
+//                    out.println("<h3>Administrador</h3>");
 //                    out.println("<h3>" +request.getAttribute("indexInsumo").toString()+objSesion.getAttribute("indexInsumo").toString()+"</h3>");                    
                 } else {
-                    out.println("<h3>Usuario</h3>");
+//                    out.println("<h3>Usuario</h3>");
                 }
                 bloquesHTML bloc = new bloquesHTML();
                 out.print(bloc.cabecerahtml());
@@ -48,38 +48,23 @@
 
             <nav>
                 <ul>
+                    <li><a class="buttonVmenu" href="AdminInsumo?action=index" ><img src=""></a></li>
                     <li><a class="buttonVmenu" href="AdminInsumo?action=index" >Menú</a></li>
+                    <li><a class="buttonVmenu" href="AdminInsumo?action=nuevo" >Nuevo</a></li>
                     <li><a class="buttonVmenu" href="AdminInsumo?action=nuevo" >Nuevo</a></li>
                 </ul>
             </nav>
             <article>
-                <h3>Lista  Insumos</h3>
-                <table class=inventario border=1 width="100%">                    
-                    <tr>
-                        <td> ID</td>
-                        <td> CODIGO</td>
-                        <td> NOMBRE</td>
-                        <td>DESCRPICION</td>
-                        <td>CANTIDAD</td>
-                        <td>UBICACION</td>
-                        <td>OBSERVACIONES</td>
-                        <td colspan=2>ACCIONES</td>
-                    </tr>
-                    <c:forEach var="insumo" items="${lista}">
-                        <tr>
-                            <td id='ident-box'><c:out value="${insumo.id}"/></td>
-                            <td id='code-box'><c:out value="${insumo.codigo}"/></td>
-                            <td id='namepr-box' ><c:out value="${insumo.nombre}"/></td>
-                            <td id="descrp-box" ><c:out value="${insumo.descripcion}"/></td>
-                            <td id="cntd-box"><c:out value="${insumo.cantidad}"/></td>
-                            <td id="location-box"><c:out value="${insumo.ubicacion}"/></td>
-                            <td id="observ-box"><c:out value="${insumo.observaciones}"/></td>                            
-                            <td><a href="AdminInsumo?action=showedit&id=<c:out value="${insumo.id}" />">Editar</a></td>
-                            <td><a onclick="pregunta()" href="AdminInsumo?action=eliminar&id=<c:out value="${insumo.id}"   />">Eliminar</a> </td>				
-                        </tr>
-                    </c:forEach>               
-                </table>
+                <h3>Inventario</h3>
+                <div  class="hmenu" style="align-content: center">
+                    <ul >
+                        <li><a class="buttonHmenu" onmouseover="Inventario de cosas" href="AdminInsumo?action=mostrar" value="INSUMOS">Insumos</a></li>
+                        <li><a class="buttonHmenu"  href="AdminInsumo?action=mostrar" value="INSUMOS">Materiales</a></li>
+                        <br><br><br><br><br><br><br><br><br><br>
+                    </ul>
+                </div >
             </article>
+
         </div>
         <%
             out.print(bloc.piepaginahtml());
