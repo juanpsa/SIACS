@@ -32,5 +32,10 @@ public class bloquesHTML {
         String codigo = "CSCQI" ;
         return codigo;
     }
+    
+    public String codigoMat(){
+        String codigo = "CSCQM" ;
+        return codigo;
+    }
 
 }

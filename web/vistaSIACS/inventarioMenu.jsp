@@ -59,7 +59,7 @@
                 <div  class="hmenu" style="align-content: center">
                     <ul >
                         <li><a class="buttonHmenu" onmouseover="Inventario de cosas" href="AdminInsumo?action=mostrar" value="INSUMOS">Insumos</a></li>
-                        <li><a class="buttonHmenu"  href="AdminInsumo?action=mostrar" value="INSUMOS">Materiales</a></li>
+                        <li><a class="buttonHmenu"  href="AdminInsumo?action=mostrarMat" value="INSUMOS">Materiales</a></li>
                         <br><br><br><br><br><br><br><br><br><br>
                     </ul>
                 </div >

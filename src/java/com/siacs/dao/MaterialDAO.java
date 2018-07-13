@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.siacs.model.Insumo;
+import com.siacs.model.Material;
 import com.siacs.model.conexionDB;
 import java.sql.PreparedStatement;
 
@@ -35,22 +35,23 @@ public class MaterialDAO {
 
     public Integer obtenerIndex() throws SQLException {
         Integer indexsiguiente = 1;
-        String sql= "Select max(id)+1 from " +tablaMateriales;
+        String sql = "Select max(id)+1 from " + tablaMateriales;
         con.conectar();
         connection = con.getjdbcConnection();
         Statement statement = connection.createStatement();
         ResultSet resulSet = statement.executeQuery(sql);
-        if(resulSet.next()){
-            indexsiguiente = resulSet.getInt(1);
+        if (resulSet.next()) {
+            if (resulSet.getInt(1) > 0) {
+                indexsiguiente = resulSet.getInt(1);
+            }
         }
         return indexsiguiente;
-
     }
 
-    // listar todos los productos
-    public List<Insumo> listarMateriales() throws SQLException {
+// listar todos los productos
+    public List<Material> listarMateriales() throws SQLException {
 
-        List<Insumo> listaMateriales = new ArrayList<Insumo>();
+        List<Material> listaMateriales = new ArrayList<Material>();
         String sql = "SELECT * FROM " + tablaMateriales;
         con.conectar();
         connection = con.getjdbcConnection();
@@ -64,30 +65,32 @@ public class MaterialDAO {
             String descripcion = resulSet.getString("descripcion");
             int cantidad = resulSet.getInt("cantidad");
             String ubicacion = resulSet.getString("ubicacion");
+            int numerousos = resulSet.getInt("numerousos");
+            String funcionalidad = resulSet.getString("funcionalidad");
             String observaciones = resulSet.getString("observaciones");
-            Insumo insumo = new Insumo(id, codigo, nombre, descripcion, cantidad, ubicacion, observaciones);
-            listaMateriales.add(insumo);
+            Material material = new Material(id, codigo, nombre, descripcion, cantidad, ubicacion, numerousos, funcionalidad, observaciones);
+            listaMateriales.add(material);
         }
         con.desconectar();
         return listaMateriales;
     }
 
-    // insertar insumo en la tabla de insumos
-    public boolean insertar(Insumo insumo) throws SQLException {
+    // insertar material en la tabla de materiales
+    public boolean insertar(Material material) throws SQLException {
         String sql = "INSERT INTO " + tablaMateriales + " (id, codigo, nombre, descripcion, cantidad, ubicacion, "
-                + "observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";
-        System.out.println(insumo.getDescripcion());
+                + "numerousos, funcionalidad, observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";
+        System.out.println(material.getDescripcion());
         con.conectar();
         connection = con.getjdbcConnection();
         boolean rowInserted;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, insumo.getId());
-            statement.setString(2, insumo.getCodigo());
-            statement.setString(3, insumo.getNombre());
-            statement.setString(4, insumo.getDescripcion());
-            statement.setInt(5, insumo.getCantidad());
-            statement.setString(6, insumo.getUbicacion());
-            statement.setString(7, insumo.getObservaciones());
+            statement.setInt(1, material.getId());
+            statement.setString(2, material.getCodigo());
+            statement.setString(3, material.getNombre());
+            statement.setString(4, material.getDescripcion());
+            statement.setInt(5, material.getCantidad());
+            statement.setString(6, material.getUbicacion());
+            statement.setString(7, material.getObservaciones());
             rowInserted = statement.executeUpdate() > 0;
         }
         con.desconectar();
@@ -95,8 +98,8 @@ public class MaterialDAO {
     }
 
     // obtener por id
-    public Insumo obtenerPorId(int id) throws SQLException {
-        Insumo insumo = null;
+    public Material obtenerPorId(int id) throws SQLException {
+        Material material = null;
 
         String sql = "SELECT * FROM " + tablaMateriales + " WHERE id= ? ";
         con.conectar();
@@ -106,30 +109,30 @@ public class MaterialDAO {
 
         ResultSet res = statement.executeQuery();
         if (res.next()) {
-            insumo = new Insumo(res.getInt("id"), res.getString("codigo"), res.getString("nombre"),
+            material = new Material(res.getInt("id"), res.getString("codigo"), res.getString("nombre"),
                     res.getString("descripcion"), res.getInt("cantidad"), res.getString("ubicacion"),
-                    res.getString("observaciones"));
+                    res.getInt("numerousos"), res.getString("funcionalidad"), res.getString("observaciones"));
         }
         res.close();
         con.desconectar();
 
-        return insumo;
+        return material;
     }
 
     // actualizar
-    public boolean actualizar(Insumo insumo) throws SQLException {
+    public boolean actualizar(Material material) throws SQLException {
         boolean rowActualizar = false;
         String sql = "UPDATE " + tablaMateriales + " SET nombre=?,descripcion=?,cantidad=?, ubicacion=?, observaciones=? "
                 + "WHERE id=?";
         con.conectar();
         connection = con.getjdbcConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, insumo.getNombre());
-        statement.setString(2, insumo.getDescripcion());
-        statement.setInt(3, insumo.getCantidad());
-        statement.setString(4, insumo.getUbicacion());
-        statement.setString(5, insumo.getObservaciones());
-        statement.setInt(6, insumo.getId());
+        statement.setString(1, material.getNombre());
+        statement.setString(2, material.getDescripcion());
+        statement.setInt(3, material.getCantidad());
+        statement.setString(4, material.getUbicacion());
+        statement.setString(5, material.getObservaciones());
+        statement.setInt(6, material.getId());
 
         rowActualizar = statement.executeUpdate() > 0;
         System.out.println(statement.toString());
@@ -139,13 +142,13 @@ public class MaterialDAO {
     }
 
     //eliminar
-    public boolean eliminar(Insumo insumo) throws SQLException {
+    public boolean eliminar(Material material) throws SQLException {
         boolean rowEliminar = false;
         String sql = "DELETE FROM " + tablaMateriales + " WHERE ID=?";
         con.conectar();
         connection = con.getjdbcConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, insumo.getId());
+        statement.setInt(1, material.getId());
 
         rowEliminar = statement.executeUpdate() > 0;
         statement.close();

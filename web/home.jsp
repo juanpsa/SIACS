@@ -28,8 +28,7 @@ and open the template in the editor.
                 Usuario: <input class="btn-styles" autocomplete="off"><br>
                 Password: <input class="btn-styles" autocomplete="off"><br>
                 <input type="submit" value="Ingresar" title="Ingresar">
-            </form>
-            <a href="prueba">my servlet</a>
+            </form>            
         </div><br>
         <div id="body-section">
             <div id="video-content"></div>

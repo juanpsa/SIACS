@@ -40,8 +40,10 @@ public class InsumoDAO {
         connection = con.getjdbcConnection();
         Statement statement = connection.createStatement();
         ResultSet resulSet = statement.executeQuery(sql);
-        if(resulSet.next()){
-            indexsiguiente = resulSet.getInt(1);
+        if (resulSet.next()) {
+            if (resulSet.getInt(1) > 0) {
+                indexsiguiente = resulSet.getInt(1);
+            }
         }
         return indexsiguiente;
 

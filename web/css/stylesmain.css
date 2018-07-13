@@ -42,6 +42,7 @@ input[type="text"] {
     background-color: #fff;
     font-weight: bold;
     text-align: center;
+    width: 90%;
 }
 
 #body table {
@@ -300,4 +301,9 @@ article {
 
 .piepagina{
     height: 250px;
+}
+
+
+td input[type=number]{
+    width: 90%;
 }

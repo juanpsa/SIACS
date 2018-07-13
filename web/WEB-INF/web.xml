@@ -33,4 +33,8 @@
         <param-name>jdbcPassword</param-name>
         <param-value>_SiacsRoot20</param-value>
     </context-param>
+    <context-param>
+        <param-name>paginaInicio</param-name>
+        <param-value>home.jsp</param-value>
+    </context-param>
 </web-app>
