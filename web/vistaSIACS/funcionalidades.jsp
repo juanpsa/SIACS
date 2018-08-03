@@ -39,9 +39,7 @@
                 <h3>Inventario</h3>
                 <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                
                 <h3>Usuarios</h3>
-                <p>Administración de los usuarios que podrán ingresar a los datos de los inventarios</p>                
-                <h3>Informes</h3>
-                <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                
+                <p>Administración de los usuarios que podrán ingresar a los datos de los inventarios</p>                                
             </article>
         </div>
         <%

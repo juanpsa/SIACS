@@ -48,10 +48,7 @@
 
             <nav>
                 <ul>
-                    <li><a class="buttonVmenu" href="AdminInsumo?action=index" ><img src=""></a></li>
-                    <li><a class="buttonVmenu" href="AdminInsumo?action=index" >Menú</a></li>
-                    <li><a class="buttonVmenu" href="AdminInsumo?action=nuevo" >Nuevo</a></li>
-                    <li><a class="buttonVmenu" href="AdminInsumo?action=nuevo" >Nuevo</a></li>
+                    <li><a class="buttonVmenu" href="AdminInsumo?action=index" >Menú Principal</a></li>                                        
                 </ul>
             </nav>
             <article>
