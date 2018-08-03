@@ -3,8 +3,12 @@
     Created on : jun 14, 2018, 3:38:24 p.m.
     Author     : jpsigcho
 --%>
-
+<%@taglib prefix="t" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- En caso de que exista una sesion iniciada redirecciono a index.jsp. "NO tiene caso mostrar este formulario cuando hay una sesion iniciada --%>
+<t:if test="${sessionScope['sessionEmail']!=null}">
+    <% response.sendRedirect("index.jsp");%>
+</t:if>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

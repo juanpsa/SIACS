@@ -12,11 +12,15 @@ public class Material {
     private String descripcion;
     private int cantidad;
     private String ubicacion;
-    private int numerousos;
+    private int numerousos;    
+    private int disponibilidad; 
     private String funcionalidad;
     private String observaciones;
-
-    public Material(int id, String codigo, String nombre, String descripcion, int cantidad, String ubicacion, int numerousos, String funcionalidad, String observaciones) {
+    
+    
+    //constructor del método
+    public Material(int id, String codigo, String nombre, String descripcion, int cantidad, String ubicacion, 
+            int numerousos, int disponibilidad, String funcionalidad, String observaciones) {
         this.id = id;
         this.codigo = codigo;
         this.nombre = nombre;
@@ -24,6 +28,7 @@ public class Material {
         this.cantidad = cantidad;
         this.ubicacion = ubicacion;
         this.numerousos = numerousos;
+        this.disponibilidad = disponibilidad;
         this.funcionalidad = funcionalidad;
         this.observaciones = observaciones;
     }
@@ -83,7 +88,15 @@ public class Material {
     public void setNumerousos(int numerousos) {
         this.numerousos = numerousos;
     }
+    
+    public int getDisponibilidad() {
+        return disponibilidad;
+    }
 
+    public void setDisponibilidad(int disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+    
     public String getFuncionalidad() {
         return funcionalidad;
     }

@@ -33,15 +33,13 @@
                 <ul>
                     <li><a class="buttonVmenu" href="AdminInsumo?action=indexInv">Inventario</a></li>
                     <li><a class="buttonVmenu" href="AdminInsumo?action=indexInv">Usuarios</a></li>
-                    <li><a class="buttonVmenu" href="conexion.jsp">Informes</a></li>
-                    
                 </ul>
             </nav>
             <article>
                 <h3>Inventario</h3>
                 <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                
                 <h3>Usuarios</h3>
-                <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                
+                <p>Administración de los usuarios que podrán ingresar a los datos de los inventarios</p>                
                 <h3>Informes</h3>
                 <p>Inventario de los materiales e insumos disponibles en el Área de Ciencias de la Salud.</p>                
             </article>

@@ -65,7 +65,7 @@
                         <td>NÚMERO USOS</td>
                         <td>FUNCIONALIDAD</td>
                         <td>OBSERVACIONES</td>
-                        <td colspan=2>ACCIONES</td>
+                        <td colspan=2 align="center">ACCIONES</td>
                     </tr>
                     <c:forEach var="material" items="${listaMat}">
                         <tr>
@@ -76,6 +76,7 @@
                             <td id="cntd-box"><c:out value="${material.cantidad}"/></td>
                             <td id="location-box"><c:out value="${material.ubicacion}"/></td>
                             <td id="location-box"><c:out value="${material.numerousos}"/></td>
+                            <td id="location-box"><c:out value="${material.disponibilidad}"/></td>
                             <td id="location-box"><c:out value="${material.funcionalidad}"/></td>                            
                             <td id="observ-box"><c:out value="${material.observaciones}"/></td>                            
                             <td><a href="AdminInsumo?action=showedit&id=<c:out value="${material.id}" />">Editar</a></td>

@@ -66,9 +66,11 @@ public class MaterialDAO {
             int cantidad = resulSet.getInt("cantidad");
             String ubicacion = resulSet.getString("ubicacion");
             int numerousos = resulSet.getInt("numerousos");
+            int disponibilidad = resulSet.getInt("disponibilidad");
             String funcionalidad = resulSet.getString("funcionalidad");
             String observaciones = resulSet.getString("observaciones");
-            Material material = new Material(id, codigo, nombre, descripcion, cantidad, ubicacion, numerousos, funcionalidad, observaciones);
+            Material material = new Material(id, codigo, nombre, descripcion, cantidad, ubicacion, numerousos,
+                    disponibilidad, funcionalidad, observaciones);
             listaMateriales.add(material);
         }
         con.desconectar();
@@ -78,8 +80,7 @@ public class MaterialDAO {
     // insertar material en la tabla de materiales
     public boolean insertar(Material material) throws SQLException {
         String sql = "INSERT INTO " + tablaMateriales + " (id, codigo, nombre, descripcion, cantidad, ubicacion, "
-                + "numerousos, funcionalidad, observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";
-        System.out.println(material.getDescripcion());
+                + "numerousos, funcionalidad, observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";        
         con.conectar();
         connection = con.getjdbcConnection();
         boolean rowInserted;
@@ -111,7 +112,8 @@ public class MaterialDAO {
         if (res.next()) {
             material = new Material(res.getInt("id"), res.getString("codigo"), res.getString("nombre"),
                     res.getString("descripcion"), res.getInt("cantidad"), res.getString("ubicacion"),
-                    res.getInt("numerousos"), res.getString("funcionalidad"), res.getString("observaciones"));
+                    res.getInt("numerousos"), res.getInt("disponibilidad"), res.getString("funcionalidad"), 
+                    res.getString("observaciones"));
         }
         res.close();
         con.desconectar();
