@@ -30,7 +30,7 @@
             </nav>
             <article>
                 <h3>Registrar Insumo</h3>
-                <form action="AdminInsumo?action=register" method="post">
+                <form action="AdminInsumo?action=registerMat" method="post">
                     <div class="">
                         <table border="1" align="left">                
                             <tr>
@@ -55,8 +55,12 @@
                             </tr>		
                             <tr>
                                 <td>Número usos</td>		
-                                <td><input type="text" name="numerousos"/></td>	
-                            </tr>		
+                                <td><input type="number" name="numerousos"/></td>	
+                            </tr>
+                             <tr>
+                                <td>Disponibilidad</td>		
+                                <td><input type="number" name="disponibilidad"/></td>	
+                            </tr>
                             <tr>
                                 <td>Funcionalidad</td>		
                                 <td><input type="text" name="funcionalidad"/></td>	

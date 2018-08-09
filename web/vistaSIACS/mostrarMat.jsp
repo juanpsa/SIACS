@@ -64,6 +64,7 @@
                         <td>CANTIDAD</td>
                         <td>UBICACION</td>
                         <td>NÚMERO USOS</td>
+                        <td>DISPONIBILIDAD</td>
                         <td>FUNCIONALIDAD</td>
                         <td>OBSERVACIONES</td>
                         <td colspan=2 align="center">ACCIONES</td>

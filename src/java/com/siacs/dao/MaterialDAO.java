@@ -80,7 +80,7 @@ public class MaterialDAO {
     // insertar material en la tabla de materiales
     public boolean insertar(Material material) throws SQLException {
         String sql = "INSERT INTO " + tablaMateriales + " (id, codigo, nombre, descripcion, cantidad, ubicacion, "
-                + "numerousos, funcionalidad, observaciones)" + " VALUES (?, ?, ?,?,?,?,?)";        
+                + "numerousos, disponibilidad, funcionalidad, observaciones)" + " VALUES (?,?,?,?,?,?,?,?,?)";
         con.conectar();
         connection = con.getjdbcConnection();
         boolean rowInserted;
@@ -91,7 +91,10 @@ public class MaterialDAO {
             statement.setString(4, material.getDescripcion());
             statement.setInt(5, material.getCantidad());
             statement.setString(6, material.getUbicacion());
-            statement.setString(7, material.getObservaciones());
+            statement.setInt(7, material.getNumerousos());
+            statement.setInt(8, material.getDisponibilidad());
+            statement.setString(9, material.getFuncionalidad());
+            statement.setString(10, material.getObservaciones());
             rowInserted = statement.executeUpdate() > 0;
         }
         con.desconectar();
@@ -112,7 +115,7 @@ public class MaterialDAO {
         if (res.next()) {
             material = new Material(res.getInt("id"), res.getString("codigo"), res.getString("nombre"),
                     res.getString("descripcion"), res.getInt("cantidad"), res.getString("ubicacion"),
-                    res.getInt("numerousos"), res.getInt("disponibilidad"), res.getString("funcionalidad"), 
+                    res.getInt("numerousos"), res.getInt("disponibilidad"), res.getString("funcionalidad"),
                     res.getString("observaciones"));
         }
         res.close();

@@ -66,10 +66,10 @@ public class AdminInventario extends HttpServlet {
                 case "index":
                     index(request, response);
                     break;
+                //CASOS PARA MODIFICAR INSUMOS
                 case "indexInv":
                     indexInv(request, response);
                     break;
-                //CASOS PARA MODIFICAR INSUMOS
                 case "nuevo":
                     nuevo(request, response);
                     break;
@@ -90,6 +90,9 @@ public class AdminInventario extends HttpServlet {
                     eliminar(request, response);
                     break;
                 //CASOS  PARA MODIFICAR MATERIALES   
+                case "indexMaterial":
+                    indexMaterial(request, response);
+                    break;
                 case "nuevoMat":
                     nuevoMat(request, response);
                     break;
@@ -134,13 +137,13 @@ public class AdminInventario extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    //BLOQUE DE CONTROL PARA INSUMOS
+    //Método para consultar y cargar todos los insumos del inventario 
     private void indexInv(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/vistaSIACS/inventarioMenu.jsp");
         dispatcher.forward(request, response);
     }
 
-    //BLOQUE DE CONTROL PARA INSUMOS
-    //Método para consultar y cargar todos los insumos del inventario 
     private void mostrar(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         Integer indice = insumoDAO.obtenerIndex();
         request.setAttribute("indexInsumo", indice);
@@ -208,6 +211,11 @@ public class AdminInventario extends HttpServlet {
     }
 
     //BLOQUE DE CONTROL PARA MATERIALES
+    private void indexMaterial(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/vistaSIACS/inventarioMenu.jsp");
+        dispatcher.forward(request, response);
+    }
+
     private void mostrarMat(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         Integer indiceMat = materialDAO.obtenerIndex();
         request.setAttribute("indexMaterial", indiceMat);
@@ -228,11 +236,13 @@ public class AdminInventario extends HttpServlet {
 
     //Método del Servlet desde el cual se hace el registro de inventario
     private void registrarMat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        Insumo insumo = new Insumo(0, request.getParameter("codigo"), request.getParameter("nombre"),
+        Material material = new Material(0, request.getParameter("codigo"), request.getParameter("nombre"),
                 request.getParameter("descripcion"), Integer.parseInt(request.getParameter("cantidad")),
-                request.getParameter("ubicacion"), request.getParameter("observaciones"));
-        if (insumoDAO.insertar(insumo)) {
-            mostrar(request, response);
+                request.getParameter("ubicacion"), Integer.parseInt(request.getParameter("numerousos")), 
+                Integer.parseInt(request.getParameter("disponibilidad")), request.getParameter("funcionalidad"), 
+                request.getParameter("observaciones"));
+        if (materialDAO.insertar(material)) {
+            mostrarMat(request, response);
         } else {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/vistaSIACS/mensajeerror.jsp");
             dispatcher.forward(request, response);

@@ -23,7 +23,7 @@ public class bloquesHTML {
 
     public String piepaginahtml() {
         String piepagina = "<div class=\"piepagina\">\n"
-                + "            <footer>Área de Ciencias de la Salud</footer>\n"
+                + "            <footer>Departamento de Ciencias de la Salud</footer>\n"
                 + "        </div>";
         return piepagina;
     }
